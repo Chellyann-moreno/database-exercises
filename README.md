@@ -1,1 +1,1 @@
-# database-exercises
+#SQL and other databases exercises
