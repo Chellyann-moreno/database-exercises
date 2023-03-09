@@ -16,7 +16,7 @@ show create table albums;
 select * 
 from albums_db.albums as al;
 -- What does the column named 'name' represent? Albums name (varchar)
--- What do you think the sales column represents? how many copies were sold
+-- What do you think the sales column represents? how many copies were sold or dollars.
 -- Find the name of all albums by Pink Floyd. Albums names are: The Dark Side of the Moon, The Wall
 Select artist, name
 from albums_db.albums
