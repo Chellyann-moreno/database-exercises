@@ -32,10 +32,9 @@ order by last_name, first_name;
 Enter a comment with the number of employees returned, the first employee number and their first and last name, 
 and the last employee number with their first and last name.
 899 employees, Ramzi Erde, Tadahiro Erde*/
-select  *
+select *
 from employees
-where last_name like 'E%'
-and last_name  like '%E'
+where last_name like 'e%e'
 order by emp_no;
 /* 
 Write a query to to find all employees whose last name starts and ends with 'E'. 
@@ -52,12 +51,12 @@ order by hire_date desc;
 Sort the results so that the oldest employee who was hired last is the first result. 
 Enter a comment with the number of employees returned, the name of the oldest employee who was hired last, 
 and the name of the youngest employee who was hired first. 362 employes
-Khun Bermini, Alselm Cappello */
+Khun Bermini, Douadi Pettis*/
 select * 
 from employees
 where hire_date between '1990-01-01' and '1999-12-31'
 and birth_date like ('%12-25')
-order by hire_date desc;
+order by birth_date, hire_date desc;
 
 
 

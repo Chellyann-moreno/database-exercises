@@ -19,6 +19,7 @@ and birth_date like ('%12-25')
 order by hire_date
 limit 5;
 -- Alselm Cappelo, Utz Mandell, Bouchung Schreiter, Baocai Kushner, Peter Stroustrup
+
 /* Try to think of your results as batches, sets, or pages. 
 The first five results are your first page. The five after that would be your second page, etc. 
 Update the query to find the tenth page of results */
@@ -27,9 +28,9 @@ from employees
 where hire_date between '1990-01-01' and '1999-12-31'
 and birth_date like ('%12-25')
 order by hire_date
-limit 5 offset 10;
+limit 5 offset 45;
 /* LIMIT and OFFSET can be used to create multiple pages of data. 
 What is the relationship between OFFSET (number of results to skip), 
 LIMIT (number of results per page), and the page number?  
-   Offset basically tells the command limit at what page/row to start counting the limit. 
-   By telling limit show only five results from page 10 by using the offset limit. */
+limit at what page/row to start counting the limit. 
+By telling limit show only five results from page 45 by using the offset limit. */
