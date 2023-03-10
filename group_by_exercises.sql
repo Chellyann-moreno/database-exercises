@@ -28,7 +28,7 @@ and last_name not like ('%qu%')
 group by last_name;
 
 /* Add a COUNT() to your results (the query above) to find the number of employees with the same last name.  */
-select count(last_name)
+select last_name, count(last_name)
 from employees
 where last_name like ('%q%')
 and last_name not like ('%qu%')
@@ -40,7 +40,8 @@ Use COUNT(*) and GROUP BY to find the number of employees for each gender with t
 select first_name, gender, count(gender) as gender_count
 from employees
 where first_name IN ('Irena','Vidya','Maya')
-group by first_name, gender;
+group by first_name, gender
+order by first_name;
 
 /* Using your query that generates a username for all of the employees, 
 generate a count employees for each unique username. */
@@ -62,6 +63,14 @@ generate a count employees for each unique username. */
  having count_username >1
  order by count_username DESC;
  
+ Select count(*) 
+ from (
+   select  lower( concat(left(first_name,1),left(last_name,4),'_',substr(birth_date,6,2), substr(birth_date,-8,2))) as username,
+  count(*) as count_username
+ from employees
+) as a
+group by username
+ 
  
  
  
@@ -78,7 +87,7 @@ generate a count employees for each unique username. */
  The query result should show 9 rows, one for each department and the employee count. */
  select  dept_no, count(*) 
  from dept_emp
- where to_date like '9999-01-01'
+ where to_date > now()
  group by dept_no;
 
  /* Determine how many different salaries each employee has had. 
@@ -98,7 +107,7 @@ group by  emp_no;
 group by  emp_no;
 
 -- Find the standard deviation of salaries for each employee.
- select emp_no, STDDEV(salary) as STD_salary
+ select emp_no, round(STDDEV(salary), 2) as STD_salary
  from salaries
 group by  emp_no;
 
@@ -106,14 +115,15 @@ group by  emp_no;
 
   select emp_no, max(salary) as max_salary
  from salaries
- where salary > 150000
-group by  emp_no;
+group by  emp_no
+having max_salary > 150000;
 
 -- Find the average salary for each employee where that average salary is between $80k and $90k.
  select emp_no, avg(salary) as avg_salary
  from salaries
-  where salary between 80000 and 90000
-group by  emp_no;
+group by  emp_no
+having avg_salary between 80000 and 90000;
+
  
  
  
